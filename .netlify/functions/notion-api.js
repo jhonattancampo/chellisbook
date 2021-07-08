@@ -6,7 +6,6 @@ const notion = new Client({
 
 const database_id = process.env.NOTION_DATABASE_ID;
 
-console.log(process.env.NOTION_TOKEN)
 exports.handler = async (event) => {
 
     const payload = {
@@ -22,10 +21,11 @@ exports.handler = async (event) => {
 
     const users = results.map((page) => {
 
+
         return {
             id: calcID(page.created_time),
             username: page.properties.username.rich_text[0].text.content,
-            name: page.properties.name.rich_text[0].text.content,
+            name: page.properties.name.title[0].text.content,
             email:page.properties.email.rich_text[0].text.content,
             address: JSON.parse(page.properties.address.rich_text[0].text.content),
             phone: page.properties.phone.rich_text[0].text.content,
@@ -33,6 +33,7 @@ exports.handler = async (event) => {
             company: JSON.parse(page.properties.company.rich_text[0].text.content)
         }
     });
+
 
     return {
         statusCode : 200,

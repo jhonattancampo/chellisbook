@@ -13,7 +13,7 @@ function App(){
             .then( friends => {setFriends(friends) });
     }, []);
 
-    const onSeachChange = (event) => {
+    const onSearchChange = (event) => {
         setSearchfield(event.target.value)
     };
 
@@ -26,7 +26,7 @@ function App(){
     (
         <div>
             <h1>Chelli's Friends</h1>
-            <SearchBox searchChange={onSeachChange()} />
+            <SearchBox searchChange={onSearchChange} />
             <CardList friends={filteredFriends} />
         </div>
     )
