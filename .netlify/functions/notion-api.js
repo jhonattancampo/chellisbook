@@ -6,6 +6,7 @@ const notion = new Client({
 
 const database_id = process.env.NOTION_DATABASE_ID;
 
+console.log(process.env.NOTION_TOKEN)
 exports.handler = async (event) => {
 
     const payload = {
@@ -31,5 +32,13 @@ exports.handler = async (event) => {
             website: page.properties.website.rich_text[0].text.content,
             company: JSON.parse(page.properties.company.rich_text[0].text.content)
         }
-    })
+    });
+
+    return {
+        statusCode : 200,
+        headers: {
+            'Content-Type' : 'application/json'
+        },
+        body: JSON.stringify(users)
+    }
 }
