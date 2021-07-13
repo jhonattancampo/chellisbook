@@ -24,8 +24,8 @@ function App(){
     return !friends.length ?
         <h1>Loading friends...</h1> :
     (
-        <div>
-            <h1>Chelli's Friends</h1>
+        <div className='tc pa3'>
+            <h1 className='purple'>Chelli's Friends</h1>
             <SearchBox searchChange={onSearchChange} />
             <CardList friends={filteredFriends} />
         </div>

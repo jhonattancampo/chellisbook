@@ -2,7 +2,7 @@ import Card from "./Card";
 
 const CardList = ({ friends }) => {
     return (
-        <div>
+        <div className="pa4">
             {
                 friends.map((user, i) => {
                     return (
